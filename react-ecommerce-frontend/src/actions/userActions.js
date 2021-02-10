@@ -16,6 +16,7 @@ import {
   USER_DETAILS_RESET,
 } from "../constants/userConstants";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstants";
+import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -54,9 +55,14 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem("userInfo");
+  localStorage.removeItem("cartItems");
+  localStorage.removeItem("shippingAddress");
+  localStorage.removeItem("paymentMethod");
   dispatch({ type: USER_LOGOUT });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: ORDER_LIST_MY_RESET });
+  dispatch({ type: CART_CLEAR_ITEMS });
+  document.location.href = "/login";
 };
 
 export const register = (name, email, password) => async (dispatch) => {
