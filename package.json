@@ -10,7 +10,8 @@
     "client": "npm start --prefix react-ecommerce-frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "data:import": "node react-ecommerce-backend/seeder",
-    "data:destroy": "node react-ecommerce-backend/seeder -d"
+    "data:destroy": "node react-ecommerce-backend/seeder -d",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix react-ecommerce-frontend && npm run build --prefix react-ecommerce-frontend"
   },
   "author": "",
   "license": "ISC",
@@ -21,7 +22,9 @@
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.11.14"
+    "mongoose": "^5.11.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
